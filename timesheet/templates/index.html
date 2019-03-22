@@ -1,0 +1,12 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>iTimesheet home</h1>
+  <p>Welcome to Icraft iTimesheet</p>
+  <h2>Dynamic content</h2>
+  <p>The library has the following record counts:</p>
+  <ul>
+    <li><strong>Entries:</strong> {{ num_entries }}</li>
+    <li><strong>Customers:</strong> {{ num_customers }}</li>
+  </ul>
+{% endblock %}
