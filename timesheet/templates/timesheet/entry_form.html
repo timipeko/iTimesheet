@@ -1,0 +1,12 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+        {% for form in formset %}
+    <form method="post">
+            {{ form.as_table }}
+                </form>
+        {% endfor %}
+
+    <input type="submit" value="Submit" />
+{% endblock %}

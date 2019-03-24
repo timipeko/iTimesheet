@@ -32,15 +32,6 @@ class Project(models.Model):
         """Returns the url to access a detail record for this customer."""
         return reverse('project-detail', args=[str(self.id)])
 
-class Note(models.Model):
-
-    def __str__(self):
-        """String for representing the Model object."""
-        return str("{} {}".format(self.project, self.text))
-
-    text = models.TextField(null=True)
-    project = models.ForeignKey(Project,  on_delete=models.SET_NULL, null=True)
-
 class Entry(models.Model):
     """Model representing a timesheet entry"""
 

@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
   {% block title %}<title>Icraft Time Sheet</title>{% endblock %}
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <!-- Add additional CSS in static file -->
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
@@ -12,14 +15,18 @@
 <body>
   <div class="container-fluid">
     <div class="row">
+      {% if user.is_authenticated %}
       <div class="col-sm-2">
       {% block sidebar %}
         <ul class="sidebar-nav">
+        <img src="{% static "timesheet/images/logo.png" %}" class="img-fluid" alt="Icraft logo">
           <li><a href="{% url 'index' %}">Home</a></li>
-          <li><a href="{% url 'entries' %}">All entries</a></li>
-          <li><a href="">Link2</a></li>
+          <li><a href="{% url 'entries' %}">Entry List</a></li>
+          <li><a href="{% url 'admin:index' %}">Admin Interface</a><li>
+          <li><a href="{% url 'logout' %}">Logout</a></li>
         </ul>
      {% endblock %}
+     {% endif %}
       </div>
       <div class="col-sm-10 ">{% block content %}{% endblock %}</div>
     </div>

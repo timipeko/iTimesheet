@@ -1,17 +1,19 @@
 from django.contrib import admin
 from django import forms
-from timesheet.models import Customer, Project, Entry, Note
+from timesheet.models import Customer, Project, Entry
+
+
+class ProjectInline(admin.TabularInline):
+    model = Project
 
 @admin.register(Customer)
 class CustomerAdmin(admin.ModelAdmin):
-    pass
+    inlines = [
+        ProjectInline,
+    ]
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    pass
-
-@admin.register(Note)
-class NoteAdmin(admin.ModelAdmin):
     pass
 
 @admin.register(Entry)

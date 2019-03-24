@@ -18,6 +18,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import RedirectView
+from .routers import router
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,4 +26,5 @@ urlpatterns = [
     path('', RedirectView.as_view(url='/timesheet/')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('timesheet/', include('timesheet.urls')),
+     path('api/', include(router.urls))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
