@@ -16,10 +16,13 @@ def index(request):
 
     # The 'all()' is implied by default.    
     hours = list(Entry.objects.aggregate(Sum('duration')).values())[0]
+
+    customers = Customer.objects.values_list('name', flat=True) 
     
     context = {
         'num_entries': entries,
         'sum_hours': hours,
+        'customers': customers
     }
 
     # Render the HTML template index.html with the data in the context variable
@@ -33,6 +36,11 @@ class EntryListView(generic.ListView):
 
     def get_queryset(self):
         return Entry.objects.filter(user=self.request.user)
+
+    def get_context_data(self,**kwargs):
+        context = super(EntryListView,self).get_context_data(**kwargs)
+        context['duration_sum'] = list(Entry.objects.filter(user=self.request.user).aggregate(Sum('duration')).values())[0]
+        return context
 
 class EntryFormSet(ModelFormSetView):
     model = Entry

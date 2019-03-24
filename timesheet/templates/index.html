@@ -9,6 +9,11 @@
     <li><strong>Entries:</strong> {{ num_entries }}</li>
     <li><strong>Total hours logged:</strong> {{ sum_hours }}</li>
   </ul>
+  <h3> Current customers:</h3>
+  <ul>
+{% for customer in customers %}
+  <li>{{ customer }}</li>
+{% endfor %}
 {% else %}
   <p>Welcome to Icraft iTimesheet</p>
   <p>You are not logged in</p>

@@ -31,26 +31,37 @@
     <h2>Entries</h2>
         <table class="table">
             <thead class="thead-dark">
-                <th scope="col">Date</th>
-                <th scope="col">User</th>
-                <th scope="col">Customer</th>
-                <th scope="col">Project</th>
+                <th scope="col">Date  <i class="fas fa-caret-up">    <i class="fas fa-caret-down"></th>
+                <th scope="col">User    <i class="fas fa-caret-up">    <i class="fas fa-caret-down"></th>
+                <th scope="col">Customer    <i class="fas fa-caret-up">    <i class="fas fa-caret-down"></th>
+                <th scope="col">Project    <i class="fas fa-caret-up">    <i class="fas fa-caret-down"></th>
+                <th scope="col">Duration    <i class="fas fa-caret-up">    <i class="fas fa-caret-down"></th>
                 <th scope="col">Description</th>
-                <th scope="col"></th>
-                <th scope="col"></th>
+                <th colspan="2" scope="col">Actions</th>
             </thead>
             <tbody>
             {% for entry in object_list %}
                 <tr>
                     <td scope="row">{{ entry.date }}</td>
-                    <td>{{ entry.user }}</td>
+                    <td>{{ entry.user }}</i></i></td>
                     <td>{{ entry.customer }}</td>
                     <td>{{ entry.project }}</td>
+                    <td>{{ entry.duration }}</td>
                     <td>{{ entry.description }}</td>  
                     <td><i class="fas fa-edit"></i></td>
                     <td><i class="fas fa-trash-alt"></i></td>
                 </tr>
             {% endfor %}
+                <tr class="text-light bg-dark">
+                    <td scope="row"><p class="font-weight-bold">TOTAL HOURS</p></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><p class="font-weight-bold">{{ duration_sum }}</p></td>
+                    <td></td>  
+                    <td></td>
+                    <td></td>
+                </tr>
             </tbody>
         </table>
 {% endblock %}
